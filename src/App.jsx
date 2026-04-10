@@ -3,6 +3,7 @@ import { BrowserRouter ,Routes,Route} from "react-router-dom"
 import Registerpage from "./components/register"
 import AdminLayout from "./layouts/adminLayout"
 import EbookPage from "./components/Ebook"
+import SettingPage from "./components/Setting"
 
 const App=()=> {
   
@@ -15,6 +16,7 @@ const App=()=> {
         <Route path="/admin" element={<AdminLayout/>}>
         
           <Route path="ebook" element={<EbookPage/>}/>
+          <Route path="setting" element={<SettingPage/>}/>
          </Route>
       </Routes>
     </BrowserRouter>

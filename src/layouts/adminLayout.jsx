@@ -10,15 +10,15 @@ const AdminLayout = () => {
       <div className="w-[15%] bg-blue-400 transition-all duration-300 fixed h-full">
         <div className="flex flex-col p-4 text-white">
           <Link to="/home">
-          <button className="w-full p-3 rounded-2xl flex  justify-center items-center gap-2  my-2 hover:bg-rose-500"><RiHome7Fill  /> Home</button>
+          <button className="w-full p-3 rounded-2xl flex  justify-center items-center gap-2  my-2 hover:bg-rose-500"><RiHome7Fill  /> Dashboard</button>
             </Link>
             <Link to="/home">
-          <button className="w-full p-3 rounded-2xl flex  justify-center items-center gap-2  my-2 hover:bg-rose-500"><RiInfoCardFill  /> About</button>
+          <button className="w-full p-3 rounded-2xl flex  justify-center items-center gap-2  my-2 hover:bg-rose-500"><RiInfoCardFill  /> Users</button>
             </Link>
             <Link to="/admin/ebook">
           <button className="w-full p-3 rounded-2xl flex  justify-center items-center gap-2  my-2 hover:bg-rose-500"><RiBookletLine  /> Ebook</button>
             </Link>
-            <Link to="/home">
+            <Link to="/admin/setting">
           <button className="w-full p-3 rounded-2xl flex  justify-center items-center gap-2  my-2 hover:bg-rose-500"><RiSettings4Line  /> Setting</button>
             </Link>
             

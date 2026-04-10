@@ -1,11 +1,17 @@
-import { RiAddCircleLine,RiFilter2Fill } from "@remixicon/react";
+import { RiAddCircleLine,RiFilter2Fill,RiCloseLine } from "@remixicon/react";
+import { useState } from "react";
+import 'animate.css';
+
 
 
 const EbookPage=()=>{
+  const [open,setOpen] = useState(false);
+
+
     return(
         <>
         <div className="flex justify-between bg-gray-50 p-3 mb-3">
-            <button className="btn bg-rose-200 rounded-2xl text-rose-900 p-3 flex text-center gap-2 hover:cursor-pointer"> < RiAddCircleLine   /> New Ebook</button>
+            <button onClick={()=> setOpen(true)} className="btn bg-rose-200 rounded-2xl text-rose-900 p-3 flex text-center gap-2 hover:cursor-pointer"> < RiAddCircleLine   /> New Ebook</button>
             
             <button className="btn bg-gray-300 rounded-2xl text-blue p-3 flex text-center gap-2 hover:cursor-pointer"> < RiFilter2Fill  />Filter</button>
         </div>
@@ -43,6 +49,21 @@ const EbookPage=()=>{
 </div>
 
 {/* model coding start */}
+
+
+{
+  open &&
+  <div className="bg-black/60 fixed top-0 left-0 w-full min-h-screen animate__animated animate__fadeIn">
+      <div className="bg-white w-[400px] h-full absolute right-0 top-0 p-3 animate__animated animate__slideInRight">
+          <div>
+            <span onClick={()=>setOpen(false)} className="flex float-end hover:cursor-pointer hover:bg-gray-100  p-2 rounded-2xl "><RiCloseLine /> Close</span>
+          </div>
+        
+      </div>
+  </div>
+}
+
+
 
 {/* model coding end */}
 
