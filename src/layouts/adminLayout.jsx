@@ -1,47 +1,85 @@
+import { useState } from "react"; // 1. Import useState
 import { Link, Outlet } from "react-router-dom";
-
-import { RiLogoutCircleRLine ,RiMenuLine,RiHome7Fill,RiBookletLine   ,RiInfoCardFill ,RiSettings4Line    } from "@remixicon/react";
+import { 
+  RiLogoutCircleRLine, 
+  RiMenuLine, 
+  RiHome7Fill, 
+  RiBookletLine, 
+  RiInfoCardFill, 
+  RiSettings4Line,
+  RiCloseLine // Added a close icon for better UX
+} from "@remixicon/react";
 
 const AdminLayout = () => {
+  // 2. State to manage sidebar visibility
+  const [isOpen, setIsOpen] = useState(true);
+
+  const toggleSidebar = () => setIsOpen(!isOpen);
+
   return (
-    <div className="flex min-h-screen w-full bg-linear-to-t from-sky-500">
+    <div className="flex min-h-screen w-full bg-slate-100">
       
       {/* Left Sidebar */}
-      <div className="w-[15%] bg-blue-400 transition-all duration-300 fixed h-full">
-        <div className="flex flex-col p-4 text-white">
-          <Link to="/admin/dashboard">
-          <button className="w-full p-3 rounded-2xl flex  justify-center items-center gap-2  my-2 hover:bg-rose-500"><RiHome7Fill  /> Dashboard</button>
-            </Link>
-            <Link to="/home">
-          <button className="w-full p-3 rounded-2xl flex  justify-center items-center gap-2  my-2 hover:bg-rose-500"><RiInfoCardFill  /> Users</button>
-            </Link>
-            <Link to="/admin/ebook">
-          <button className="w-full p-3 rounded-2xl flex  justify-center items-center gap-2  my-2 hover:bg-rose-500"><RiBookletLine  /> Ebook</button>
-            </Link>
-            <Link to="/admin/setting">
-          <button className="w-full p-3 rounded-2xl flex  justify-center items-center gap-2  my-2 hover:bg-rose-500"><RiSettings4Line  /> Setting</button>
-            </Link>
-            
-          
+      <div 
+        className={`bg-blue-600 transition-all duration-300 fixed h-full z-50 ${
+          isOpen ? "w-[200px]" : "w-0 -left-[200px] md:left-0 md:w-[70px]"
+        } overflow-hidden`}
+      >
+        <div className="flex flex-col p-4 text-white whitespace-nowrap">
+          <Link title="Dashboard" to="/admin/dashboard">
+            <button className="w-full p-3 rounded-2xl flex items-center gap-4 my-2 hover:bg-blue-500 transition-colors">
+              <RiHome7Fill size={24} /> {isOpen && <span>Dashboard</span>}
+            </button>
+          </Link>
+          <Link title="Users" to="/home">
+            <button className="w-full p-3 rounded-2xl flex items-center gap-4 my-2 hover:bg-blue-500 transition-colors">
+              <RiInfoCardFill size={24} /> {isOpen && <span>Users</span>}
+            </button>
+          </Link>
+          <Link title="Ebook" to="/admin/ebook">
+            <button className="w-full p-3 rounded-2xl flex items-center gap-4 my-2 hover:bg-blue-500 transition-colors">
+              <RiBookletLine size={24} /> {isOpen && <span>Ebook</span>}
+            </button>
+          </Link>
+          <Link title="Settings" to="/admin/setting">
+            <button className="w-full p-3 rounded-2xl flex items-center gap-4 my-2 hover:bg-blue-500 transition-colors">
+              <RiSettings4Line size={24} /> {isOpen && <span>Setting</span>}
+            </button>
+          </Link>
         </div>
       </div>
 
       {/* Right Content Area */}
-      <div className="ml-[15%] w-[85%] bg-white transition-all duration-300">
+      <div 
+        className={`transition-all duration-300 w-full ${
+          isOpen ? "md:ml-[200px]" : "md:ml-[70px]"
+        }`}
+      >
         
         {/* Top Header */}
-        <header className="fixed top-0 left-[15%] right-0 h-[50px] bg-blue-400 flex items-center px-4 shadow-md">
-          <div className="w-full flex justify-between items-end">
-            <h1 className="hover:cursor-pointer"> <span className="font-semibold"><RiMenuLine className="text-white "/></span> </h1>
+        <header 
+          className={`fixed top-0 right-0 h-[60px] bg-white border-b flex items-center px-6 z-40 transition-all duration-300 ${
+            isOpen ? "left-[200px]" : "left-[70px]"
+          }`}
+        >
+          <div className="w-full flex justify-between items-center">
+            {/* 3. Toggle Button Trigger */}
+            <button 
+              onClick={toggleSidebar} 
+              className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            >
+              <RiMenuLine size={24} className="text-gray-700" />
+            </button>
            
-           <h1 className="hover:cursor-pointer"> <span className="font-semibold">< RiLogoutCircleRLine className="text-white hover:bg-amber-300 rounded-2xl text-rose-600"/></span>
-          </h1>
+            <button className="flex items-center gap-2 text-rose-600 font-medium hover:bg-rose-50 p-2 rounded-lg transition-colors">
+               <span>Logout</span>
+               <RiLogoutCircleRLine size={24} />
+            </button>
           </div>
-          
         </header>
 
         {/* Page Content */}
-        <main className="pt-[70px] p-4 min-h-screen">
+        <main className="pt-[80px] p-6 min-h-screen">
           <Outlet/>
         </main>
         
