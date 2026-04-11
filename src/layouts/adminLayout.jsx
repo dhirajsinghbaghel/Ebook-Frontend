@@ -9,7 +9,7 @@ const AdminLayout = () => {
       {/* Left Sidebar */}
       <div className="w-[15%] bg-blue-400 transition-all duration-300 fixed h-full">
         <div className="flex flex-col p-4 text-white">
-          <Link to="/home">
+          <Link to="/admin/dashboard">
           <button className="w-full p-3 rounded-2xl flex  justify-center items-center gap-2  my-2 hover:bg-rose-500"><RiHome7Fill  /> Dashboard</button>
             </Link>
             <Link to="/home">

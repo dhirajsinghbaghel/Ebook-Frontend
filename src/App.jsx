@@ -4,6 +4,7 @@ import Registerpage from "./components/register"
 import AdminLayout from "./layouts/adminLayout"
 import EbookPage from "./components/Ebook"
 import SettingPage from "./components/Setting"
+import DashboardPage from "./components/Dashboard"
 
 const App=()=> {
   
@@ -16,6 +17,7 @@ const App=()=> {
         <Route path="/admin" element={<AdminLayout/>}>
         
           <Route path="ebook" element={<EbookPage/>}/>
+           <Route path="dashboard" element={<DashboardPage/>}/>
           <Route path="setting" element={<SettingPage/>}/>
          </Route>
       </Routes>
