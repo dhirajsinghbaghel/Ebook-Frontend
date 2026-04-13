@@ -21,7 +21,7 @@ const AdminLayout = () => {
       
       {/* Left Sidebar */}
       <div 
-        className={`bg-blue-600 transition-all duration-300 fixed h-full z-50 ${
+        className={`bg-blue-600 transition-all duration-300 fixed h-full  ${
           isOpen ? "w-[200px]" : "w-0 -left-[200px] md:left-0 md:w-[70px]"
         } overflow-hidden`}
       >
@@ -58,7 +58,7 @@ const AdminLayout = () => {
         
         {/* Top Header */}
         <header 
-          className={`fixed top-0 right-0 h-[60px] bg-white border-b flex items-center px-6 z-40 transition-all duration-300 ${
+          className={`fixed top-0 right-0 h-[60px] bg-white border-b flex items-center px-6 transition-all duration-300 ${
             isOpen ? "left-[200px]" : "left-[70px]"
           }`}
         >

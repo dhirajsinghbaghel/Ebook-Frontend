@@ -5,8 +5,34 @@ import 'animate.css';
 
 
 const EbookPage=()=>{
-  const [open,setOpen] = useState(false);
+  const [open,setOpen] = useState(true);
+  const [formData,setFormdata] = useState({
+    title:"",
+    description:"",
+    price:"",
+    image:""
+  });
 
+  var totaltext = 50;
+  const handleFormData=(e)=>{
+    const {target} = e;
+    const {name,value}=target ;
+    if (name=="description"){
+      
+      var totaltext = Number(totaltext)-1;
+      console.log(totaltext)
+    }
+    if(name!=="image"){
+       setFormdata({
+      ...formData,
+      [name]:value
+    })
+    } 
+  }
+  const saveEbook=(e)=>{
+    e.preventDefault();
+    console.log(formData)
+  }
 
     return(
         <>
@@ -55,8 +81,39 @@ const EbookPage=()=>{
   open &&
   <div className="bg-black/60 fixed top-0 left-0 w-full min-h-screen animate__animated animate__fadeIn">
       <div className="bg-white w-[400px] h-full absolute right-0 top-0 p-3 animate__animated animate__slideInRight">
-          <div>
+          <div className="mb-10">
             <span onClick={()=>setOpen(false)} className="flex float-end hover:cursor-pointer hover:bg-gray-100  p-2 rounded-2xl "><RiCloseLine /> Close</span>
+          </div>
+          <div className="p-2">
+            <h1 className="text-2xl  bg-rose-200 rounded p-3 text-indigo-500 font-bold">Add New Book</h1>
+            <form  className="p-3 w-full" onSubmit={(e)=>saveEbook(e)}>
+              
+              <div className="mb-2">
+                <label >Title</label>
+                <input onChange={(e)=>handleFormData(e)} name="title" value={formData.title} type="text" className="w-full bg-gray-100 p-3  rounded focus:outline-hidden"  placeholder="Enter Title" required />
+              </div>
+              <div className="mb-2">
+                <div className="flex justify-between">
+                  <label >Desciption</label>
+                  <small>0/500</small>
+                </div>
+                
+                <textarea onChange={(e)=>handleFormData(e)} name="description" value={formData.description} className="w-full bg-gray-100 p-3  rounded focus:outline-hidden"></textarea>
+              </div>
+              <div>
+                <label >Price</label>
+                <input onChange={(e)=>handleFormData(e)} name="price" value={formData.price} type="number" className="w-full bg-gray-100 p-3  rounded focus:outline-hidden"  placeholder="Price  40 ₹" required />
+              </div>
+              <div>
+                <label >Image</label>
+                <input onChange={(e)=>handleFormData(e)} name="image" type="file" className="w-full bg-gray-100 p-3  rounded focus:outline-hidden"  placeholder="Enter Title" required />
+              </div>
+              <div className="mt-3">
+                <button className="bg-rose-500 text-rose-200 rounded p-2 px-4 hover:cursor-pointer">
+                  Save
+                </button>
+              </div>
+            </form>
           </div>
         
       </div>
