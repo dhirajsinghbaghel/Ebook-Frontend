@@ -5,7 +5,7 @@ import 'animate.css';
 
 
 const EbookPage=()=>{
-  const [open,setOpen] = useState(true);
+  const [open,setOpen] = useState(false);
   const [formData,setFormdata] = useState({
     title:"",
     description:"",

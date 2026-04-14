@@ -5,6 +5,7 @@ import AdminLayout from "./layouts/adminLayout"
 import EbookPage from "./components/Ebook"
 import SettingPage from "./components/Setting"
 import DashboardPage from "./components/Dashboard"
+import OtpPage from "./components/otp-verify"
 
 const App=()=> {
   
@@ -13,6 +14,7 @@ const App=()=> {
     <BrowserRouter>
       <Routes>
         <Route path="/register" element={<Registerpage/>}/>
+        <Route path="otp-verify" element={<OtpPage />}/>
 
         <Route path="/admin" element={<AdminLayout/>}>
         
